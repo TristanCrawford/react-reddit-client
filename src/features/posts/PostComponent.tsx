@@ -1,9 +1,9 @@
 import React, { MouseEventHandler } from 'react'
 
-import { Post } from './postsSlice'
+import { Child } from '../../types/reddit'
 import { LightboxComponent } from './LightboxComponent'
 
-const PostBody = ({ post }: { post: Post }) => {
+const PostBodyComponent = ({ post }: { post: Child }) => {
   if (post.data.url.match(/(\.png|\.jpg|\.jpeg|\.gif)$/g)) {
     return <img className="card-img-top" style={{ height: '100%', objectFit: 'contain' }} src={post.data.url} alt="" />
   } else {
@@ -11,12 +11,12 @@ const PostBody = ({ post }: { post: Post }) => {
   }
 }
 
-export const PostComponent = ({ post, onClick }: { post: Post, onClick: MouseEventHandler}) => {
+export const PostComponent = ({ post, onClick }: { post: Child, onClick: MouseEventHandler}) => {
   return (
     <div className="col">
       <div className="card my-3">
         <div onClick={onClick} className="bg-dark position-relative" style={{ height: '50vh' }}>
-            <PostBody post={post} />
+            <PostBodyComponent post={post} />
             <div className="card-img-overlay">
               <p className="card-title text-light text-start post-title fw-bold">{post.data.title}</p>
             </div>

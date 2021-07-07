@@ -1,36 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-export interface Listing {
-    kind: string,
-    data: {
-        before: string | null,
-        after: string | null,
-        dist: number,
-        modhash: string,
-        children: Array<Post>
-    },
-}
-
-export interface Post {
-    kind: string,
-    data: {
-        author: string,
-        created_utc: number,
-        num_comments: number,
-        permalink: string,
-        score: number,
-        stickied: boolean,
-        subreddit: string,
-        thumbnail: string | null,
-        title: string,
-        url: string,
-    }
-}
+import { Listing, Child, ChildData } from '../../types/reddit'
 
 interface PostState {
     status: string,
-    posts: Array<Post>,
+    posts: Array<Child>,
 }
 
 const initialState: PostState = {
